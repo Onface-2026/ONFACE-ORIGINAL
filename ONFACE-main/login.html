@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#017697">
+
+    <title>Entrar | ONFACE</title>
+
+    <link rel="stylesheet" href="auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="auth-body">
+
+    <header class="auth-header">
+
+        <a href="index.html" class="auth-logo">
+            <img src="imagens/logo-onface.png" alt="ONFACE">
+        </a>
+
+        <a href="index.html" class="back-link">
+            ← Voltar ao site
+        </a>
+
+    </header>
+
+    <main class="auth-main">
+
+        <section class="auth-card">
+
+            <div class="auth-brand">
+
+                <span class="auth-eyebrow">BEM-VINDO DE VOLTA</span>
+
+                <h1>Acesse sua conta.</h1>
+
+                <p>
+                    Entre na plataforma ONFACE e tenha as informações
+                    da sua rotina escolar ao seu alcance.
+                </p>
+
+            </div>
+
+            <div class="auth-divider"></div>
+
+            <form class="auth-form" id="login-form">
+
+                <div class="form-field">
+
+                    <label for="email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Digite seu e-mail"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <div class="label-row">
+
+                        <label for="senha">Senha</label>
+
+                        <a href="esqueci-senha.html" class="text-link">
+                            Esqueceu a senha?
+                        </a>
+
+                    </div>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-toggle-password="senha"
+                            aria-label="Mostrar senha"
+                        >
+                            Mostrar
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Entrar na plataforma
+                    <span>→</span>
+                </button>
+
+                <p class="demo-message" id="login-message" role="status"></p>
+
+            </form>
+
+            <div class="auth-bottom">
+
+                <p>
+                    Ainda não possui uma conta?
+                    <a href="cadastro.html" class="text-link">
+                        Criar conta
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="auth-security">
+                <span>◇</span>
+                Acesso destinado a usuários autorizados.
+            </div>
+
+        </section>
+
+        <aside class="auth-side">
+
+            <div class="side-decoration decoration-one"></div>
+            <div class="side-decoration decoration-two"></div>
+
+            <div class="side-content">
+
+                <span class="side-tag">TECNOLOGIA EDUCACIONAL</span>
+
+                <div class="side-symbol" aria-hidden="true">
+                    <span class="symbol-ring"></span>
+                    <span class="symbol-dot"></span>
+                    <span class="symbol-line"></span>
+                </div>
+
+                <h2>
+                    Mais organização.
+                    <br>
+                    Mais tempo para
+                    <span>educar.</span>
+                </h2>
+
+                <p>
+                    Uma proposta inteligente para simplificar
+                    a rotina escolar e aproximar tecnologia,
+                    organização e segurança.
+                </p>
+
+                <div class="side-line"></div>
+
+                <span class="side-caption">
+                    ONFACE · Tecnologia com propósito.
+                </span>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="auth-footer">
+        <span>© 2026 ONFACE</span>
+        <a href="index.html">Voltar à página inicial</a>
+    </footer>
+
+    <script src="auth.js"></script>
+
+</body>
+</html>

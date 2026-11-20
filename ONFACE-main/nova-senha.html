@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#017697">
+
+    <title>Nova senha | ONFACE</title>
+
+    <link rel="stylesheet" href="auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="auth-body">
+
+    <header class="auth-header">
+
+        <a href="index.html" class="auth-logo">
+            <img src="imagens/logo-onface.png" alt="ONFACE">
+        </a>
+
+        <a href="login.html" class="back-link">
+            ← Voltar ao login
+        </a>
+
+    </header>
+
+    <main class="auth-main">
+
+        <section class="auth-card">
+
+            <div class="recovery-icon" aria-hidden="true">
+
+                <svg viewBox="0 0 64 64" fill="none">
+
+                    <rect
+                        x="12" y="27" width="40" height="29" rx="5"
+                        stroke="currentColor" stroke-width="3"
+                    />
+
+                    <path
+                        d="M21 27V19C21 12.925 25.925 8 32 8C38.075 8 43 12.925 43 19V27"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                    />
+
+                    <circle cx="32" cy="39" r="3" fill="currentColor"/>
+
+                    <path
+                        d="M32 42V47"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div class="auth-brand">
+
+                <span class="auth-eyebrow">QUASE LÁ!</span>
+
+                <h1>Crie uma nova senha.</h1>
+
+                <p>
+                    Escolha uma senha forte e confirme-a para
+                    concluir a etapa de redefinição.
+                </p>
+
+            </div>
+
+            <div class="auth-divider"></div>
+
+            <form class="auth-form" id="nova-senha-form">
+
+                <div class="form-field">
+
+                    <label for="senha">Nova senha</label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua nova senha"
+                            autocomplete="new-password"
+                            minlength="12"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-toggle-password="senha"
+                            aria-label="Mostrar nova senha"
+                        >
+                            Mostrar
+                        </button>
+
+                    </div>
+
+                    <small class="field-hint">
+                        Utilize pelo menos 12 caracteres.
+                    </small>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="confirmar-senha">
+                        Confirmar nova senha
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmar-senha"
+                            name="confirmar-senha"
+                            placeholder="Digite a senha novamente"
+                            autocomplete="new-password"
+                            minlength="12"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-toggle-password="confirmar-senha"
+                            aria-label="Mostrar confirmação da senha"
+                        >
+                            Mostrar
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Redefinir senha
+                    <span>→</span>
+                </button>
+
+                <p class="demo-message" id="nova-senha-message" role="status"></p>
+
+            </form>
+
+            <div class="auth-bottom">
+
+                <p>
+                    Deseja voltar?
+                    <a href="login.html" class="text-link">
+                        Ir para o login
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="auth-security">
+                <span>◇</span>
+                Proteja sua conta com uma senha exclusiva.
+            </div>
+
+        </section>
+
+        <aside class="auth-side">
+
+            <div class="side-decoration decoration-one"></div>
+            <div class="side-decoration decoration-two"></div>
+
+            <div class="side-content">
+
+                <span class="side-tag">PROTEÇÃO DA SUA CONTA</span>
+
+                <div class="side-symbol" aria-hidden="true">
+                    <span class="symbol-ring"></span>
+                    <span class="symbol-dot"></span>
+                    <span class="symbol-line"></span>
+                </div>
+
+                <h2>
+                    Um novo começo.
+                    <br>
+                    Um acesso mais
+                    <span>seguro.</span>
+                </h2>
+
+                <p>
+                    A proteção da conta começa com boas práticas
+                    e processos de recuperação confiáveis.
+                </p>
+
+                <div class="side-line"></div>
+
+                <span class="side-caption">
+                    ONFACE · Tecnologia com propósito.
+                </span>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="auth-footer">
+        <span>© 2026 ONFACE</span>
+        <a href="index.html">Voltar à página inicial</a>
+    </footer>
+
+    <script src="auth.js"></script>
+
+</body>
+</html>

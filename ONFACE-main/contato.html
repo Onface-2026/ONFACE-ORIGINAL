@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contato | ONFACE</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container nav-container">
+
+         <a href="index.html" class="logo">
+    <img
+        src="imagens/logo-onface.png"
+        alt="ONFACE — Tecnologia educacional"
+        class="logo-image"
+    >
+</a>
+
+        <button class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Abrir menu">
+            ☰
+        </button>
+
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html">Início</a>
+            <a href="solucao.html">A solução</a>
+            <a href="beneficios.html">Benefícios</a>
+            <a href="funcionamento.html">Como funciona</a>
+            <a href="planos.html">Planos</a>
+            <a href="equipe.html">Equipe</a>
+            <a href="contato.html">Contato</a>
+            <a href="login.html" class="btn-entrar">Entrar</a>
+        </nav>
+
+        <a href="contato.html" class="btn btn-primary nav-button">
+            Solicitar demonstração
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <span class="eyebrow">VAMOS CONVERSAR?</span>
+
+            <h1>
+                Leve a ONFACE
+                <br>
+                para sua escola.
+            </h1>
+
+            <p>
+                Quer conhecer melhor nossa proposta?
+                Entre em contato e conte para nós o que sua
+                instituição precisa.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container split-layout">
+
+            <!-- INFORMAÇÕES DE CONTATO -->
+
+            <div>
+
+                <span class="eyebrow">FALE COM A ONFACE</span>
+
+                <h2>
+                    Vamos encontrar a melhor solução
+                    para sua rotina.
+                </h2>
+
+                <p>
+                    Utilize o formulário para demonstrar interesse
+                    na plataforma, solicitar informações sobre os
+                    planos ou conversar sobre uma demonstração.
+                </p>
+
+                <br>
+
+                <article class="info-card">
+
+                    <div class="icon-box">↗</div>
+
+                    <h3>Solicite uma demonstração</h3>
+
+                    <p>
+                        Conheça a proposta e converse com a equipe
+                        sobre os recursos disponíveis no projeto.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+
+            <form class="contact-form" id="contact-form">
+
+                <div class="form-field">
+
+                    <label for="nome">Nome completo</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Seu nome"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="voce@escola.com.br"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field full">
+
+                    <label for="instituicao">Nome da instituição</label>
+
+                    <input
+                        type="text"
+                        id="instituicao"
+                        name="instituicao"
+                        placeholder="Nome da escola"
+                    >
+
+                </div>
+
+
+                <div class="form-field full">
+
+                    <label for="interesse">Qual é o seu interesse?</label>
+
+                    <select id="interesse" name="interesse">
+
+                        <option value="demonstracao">
+                            Solicitar demonstração
+                        </option>
+
+                        <option value="planos">
+                            Conhecer os planos
+                        </option>
+
+                        <option value="recursos">
+                            Conhecer os recursos
+                        </option>
+
+                        <option value="outro">
+                            Outro assunto
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-field full">
+
+                    <label for="mensagem">Mensagem</label>
+
+                    <textarea
+                        id="mensagem"
+                        name="mensagem"
+                        placeholder="Conte um pouco sobre sua necessidade..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-field full">
+
+                    <button type="submit" class="btn btn-primary">
+                        Enviar interesse →
+                    </button>
+
+                </div>
+
+                <p class="form-note">
+                    Este formulário é demonstrativo. Para receber
+                    mensagens, será necessário conectá-lo a um
+                    serviço de envio ou ao backend da ONFACE.
+                </p>
+
+                <p
+                    id="form-status"
+                    class="form-note"
+                    role="status"
+                    aria-live="polite">
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container footer-content">
+
+         <a href="index.html" class="logo">
+    <img
+        src="imagens/logo-onface.png"
+        alt="ONFACE — Tecnologia educacional"
+        class="logo-image"
+    >
+</a>
+
+        <p>Tecnologia educacional com propósito.</p>
+
+        <div class="footer-links">
+            <a href="solucao.html">A solução</a>
+            <a href="planos.html">Planos</a>
+            <a href="contato.html">Contato</a>
+            <a href="login.html" class="btn-entrar">Entrar</a>
+        </div>
+
+        <small>© 2026 ONFACE. Todos os direitos reservados.</small>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+<script>
+    const formulario = document.getElementById("contact-form");
+
+    formulario.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        document.getElementById("form-status").textContent =
+            "O formulário está preenchido, mas ainda precisa ser conectado ao sistema de envio da ONFACE.";
+
+    });
+</script>
+
+</body>
+</html>

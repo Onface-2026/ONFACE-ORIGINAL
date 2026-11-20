@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#017697">
+
+    <title>Recuperar senha | ONFACE</title>
+
+    <link rel="stylesheet" href="auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="auth-body">
+
+    <header class="auth-header">
+
+        <a href="index.html" class="auth-logo">
+            <img src="imagens/logo-onface.png" alt="ONFACE">
+        </a>
+
+        <a href="login.html" class="back-link">
+            ← Voltar ao login
+        </a>
+
+    </header>
+
+    <main class="auth-main">
+
+        <section class="auth-card">
+
+            <div class="recovery-icon" aria-hidden="true">
+
+                <svg viewBox="0 0 64 64" fill="none">
+
+                    <rect
+                        x="9" y="16" width="46" height="33" rx="6"
+                        stroke="currentColor" stroke-width="3"
+                    />
+
+                    <path
+                        d="M12 20L32 35L52 20"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+            <div class="auth-brand">
+
+                <span class="auth-eyebrow">RECUPERAÇÃO DE ACESSO</span>
+
+                <h1>Esqueceu sua senha?</h1>
+
+                <p>
+                    Acontece! Informe o e-mail associado à sua conta
+                    para iniciar o processo de recuperação.
+                </p>
+
+            </div>
+
+            <div class="auth-divider"></div>
+
+            <form class="auth-form" id="recuperacao-form">
+
+                <div class="form-field">
+
+                    <label for="email">E-mail cadastrado</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Digite seu e-mail"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <button type="submit" class="auth-button">
+                    Solicitar recuperação
+                    <span>→</span>
+                </button>
+
+                <p class="demo-message" id="recuperacao-message" role="status"></p>
+
+            </form>
+
+            <div class="auth-bottom">
+
+                <p>
+                    Lembrou sua senha?
+                    <a href="login.html" class="text-link">
+                        Voltar ao login
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="auth-security">
+                <span>◇</span>
+                Sua segurança começa com a proteção da conta.
+            </div>
+
+        </section>
+
+        <aside class="auth-side">
+
+            <div class="side-decoration decoration-one"></div>
+            <div class="side-decoration decoration-two"></div>
+
+            <div class="side-content">
+
+                <span class="side-tag">SEU ACESSO, COM SEGURANÇA</span>
+
+                <div class="side-symbol" aria-hidden="true">
+                    <span class="symbol-ring"></span>
+                    <span class="symbol-dot"></span>
+                    <span class="symbol-line"></span>
+                </div>
+
+                <h2>
+                    Seu acesso
+                    <br>
+                    merece todo
+                    <span>cuidado.</span>
+                </h2>
+
+                <p>
+                    Um processo de recuperação bem planejado
+                    ajuda a proteger as contas e as informações
+                    dos usuários da plataforma.
+                </p>
+
+                <div class="side-line"></div>
+
+                <span class="side-caption">
+                    ONFACE · Tecnologia com propósito.
+                </span>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="auth-footer">
+        <span>© 2026 ONFACE</span>
+        <a href="index.html">Voltar à página inicial</a>
+    </footer>
+
+    <script src="auth.js"></script>
+
+</body>
+</html>

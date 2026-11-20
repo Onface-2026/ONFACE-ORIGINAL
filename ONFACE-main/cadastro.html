@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#017697">
+
+    <title>Criar conta | ONFACE</title>
+
+    <link rel="stylesheet" href="auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="auth-body">
+
+    <header class="auth-header">
+
+        <a href="index.html" class="auth-logo">
+            <img src="imagens/logo-onface.png" alt="ONFACE">
+        </a>
+
+        <a href="index.html" class="back-link">
+            ← Voltar ao site
+        </a>
+
+    </header>
+
+    <main class="auth-main">
+
+        <section class="auth-card auth-card-wide">
+
+            <div class="auth-brand">
+
+                <span class="auth-eyebrow">FAÇA PARTE DA ONFACE</span>
+
+                <h1>Crie sua conta.</h1>
+
+                <p>
+                    Preencha seus dados para iniciar seu cadastro
+                    na plataforma ONFACE.
+                </p>
+
+            </div>
+
+            <div class="auth-divider"></div>
+
+            <form class="auth-form" id="cadastro-form">
+
+                <div class="form-field">
+
+                    <label for="nome">Nome completo</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome completo"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="email">E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="voce@exemplo.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="instituicao">Instituição de ensino</label>
+
+                    <input
+                        type="text"
+                        id="instituicao"
+                        name="instituicao"
+                        placeholder="Nome da escola"
+                        autocomplete="organization"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="perfil">Perfil de acesso</label>
+
+                    <select id="perfil" name="perfil" required>
+
+                        <option value="" disabled selected>
+                            Selecione seu perfil
+                        </option>
+
+                        <option value="professor">Professor</option>
+
+                        <option value="coordenador">Coordenador</option>
+
+                        <option value="secretaria_ti">
+                            Secretaria / TI
+                        </option>
+
+                        <option value="responsavel">
+                            Responsável pelo aluno
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="senha">Criar senha</label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Crie uma senha"
+                            autocomplete="new-password"
+                            minlength="12"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-toggle-password="senha"
+                            aria-label="Mostrar senha"
+                        >
+                            Mostrar
+                        </button>
+
+                    </div>
+
+                    <small class="field-hint">
+                        Utilize pelo menos 12 caracteres.
+                    </small>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="confirmar-senha">
+                        Confirmar senha
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmar-senha"
+                            name="confirmar-senha"
+                            placeholder="Digite a senha novamente"
+                            autocomplete="new-password"
+                            minlength="12"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-toggle-password="confirmar-senha"
+                            aria-label="Mostrar confirmação da senha"
+                        >
+                            Mostrar
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <label class="checkbox-row">
+
+                    <input
+                        type="checkbox"
+                        id="privacidade"
+                        name="privacidade"
+                        required
+                    >
+
+                    <span>
+                        Li o aviso de privacidade e estou ciente
+                        do tratamento dos meus dados para a
+                        administração da conta.
+                    </span>
+
+                </label>
+
+                <button type="submit" class="auth-button">
+                    Criar minha conta
+                    <span>→</span>
+                </button>
+
+                <p class="demo-message" id="cadastro-message" role="status"></p>
+
+            </form>
+
+            <div class="auth-bottom">
+
+                <p>
+                    Já possui uma conta?
+                    <a href="login.html" class="text-link">
+                        Fazer login
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="auth-security">
+                <span>◇</span>
+                Seus dados merecem proteção.
+            </div>
+
+        </section>
+
+        <aside class="auth-side">
+
+            <div class="side-decoration decoration-one"></div>
+            <div class="side-decoration decoration-two"></div>
+
+            <div class="side-content">
+
+                <span class="side-tag">SUA ESCOLA CONECTADA</span>
+
+                <div class="side-symbol" aria-hidden="true">
+                    <span class="symbol-ring"></span>
+                    <span class="symbol-dot"></span>
+                    <span class="symbol-line"></span>
+                </div>
+
+                <h2>
+                    A informação
+                    <br>
+                    mais perto de
+                    <span>você.</span>
+                </h2>
+
+                <p>
+                    Uma experiência pensada para facilitar
+                    o acesso às informações escolares e
+                    simplificar processos do dia a dia.
+                </p>
+
+                <div class="side-line"></div>
+
+                <span class="side-caption">
+                    ONFACE · Tecnologia com propósito.
+                </span>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="auth-footer">
+        <span>© 2026 ONFACE</span>
+        <a href="index.html">Voltar à página inicial</a>
+    </footer>
+
+    <script src="auth.js"></script>
+
+</body>
+</html>

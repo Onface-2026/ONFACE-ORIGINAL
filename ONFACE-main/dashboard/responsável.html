@@ -1,0 +1,321 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#017697">
+    <title>ONFACE | Área do Responsável</title>
+    <link rel="stylesheet" href="portal.css">
+    <script src="portal.js" defer></script>
+</head>
+<body data-portal-role="responsavel">
+
+<div class="portal-layout">
+    <aside class="portal-sidebar" id="portal-sidebar">
+        <a href="responsavel.html" class="portal-brand">
+           <img src="../imagens/logo-onface.png" alt="ONFACE"><small>ÁREA DO RESPONSÁVEL</small></span>
+        </a>
+
+        <div class="portal-user-mini">
+            <div class="portal-avatar">RM</div>
+            <div>
+                <strong>Responsável Demo</strong>
+                <span>Conta de demonstração</span>
+            </div>
+        </div>
+
+        <p class="portal-menu-label">ACOMPANHAMENTO</p>
+        <nav class="portal-nav" aria-label="Menu do responsável">
+            <button class="portal-nav-link is-active" data-view="inicio">
+                <span>⌂</span> Visão geral
+            </button>
+            <button class="portal-nav-link" data-view="frequencia">
+                <span>▤</span> Frequência
+            </button>
+            <button class="portal-nav-link" data-view="aulas">
+                <span>▦</span> Aulas e disciplinas
+            </button>
+            <button class="portal-nav-link" data-view="notificacoes">
+                <span>♧</span> Notificações
+                <span class="portal-nav-count" id="guardian-notification-count">2</span>
+            </button>
+        </nav>
+
+        <p class="portal-menu-label">CONTA</p>
+        <nav class="portal-nav" aria-label="Configurações da conta">
+            <button class="portal-nav-link" data-view="perfil">
+                <span>♙</span> Meu perfil
+            </button>
+        </nav>
+
+        <div class="portal-sidebar-footer">
+            <div class="portal-security-dot"></div>
+            <div>
+                <strong>Ambiente ONFACE</strong>
+                <span>Acesso demonstrativo</span>
+            </div>
+        </div>
+    </aside>
+
+    <div class="portal-main">
+        <header class="portal-topbar">
+            <button class="portal-mobile-menu" id="portal-menu-toggle"
+                    aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+            <div class="portal-breadcrumb">
+                <span>ONFACE</span><span>/</span>
+                <strong id="portal-current-section">Visão geral</strong>
+            </div>
+
+            <div class="portal-top-actions">
+                <span class="portal-date" id="portal-current-date"></span>
+                <button class="portal-icon-button" data-open-view="notificacoes"
+                        aria-label="Abrir notificações">♧</button>
+                <div class="portal-top-avatar">RM</div>
+            </div>
+        </header>
+
+        <main class="portal-content">
+
+            <!-- INÍCIO -->
+            <section class="portal-view is-active" data-section="inicio">
+                <div class="portal-welcome">
+                    <div>
+                        <span class="portal-eyebrow">ACOMPANHAMENTO ESCOLAR</span>
+                        <h1>Olá, <span id="guardian-greeting">Responsável</span>!</h1>
+                        <p>Acompanhe a frequência e a rotina escolar do seu filho.</p>
+                    </div>
+                    <div class="portal-welcome-decoration">ON</div>
+                </div>
+
+                <div class="portal-child-card">
+                    <div class="portal-child-avatar">LA</div>
+                    <div class="portal-child-info">
+                        <span>ALUNO VINCULADO</span>
+                        <h2 id="guardian-child-name">Lucas Almeida</h2>
+                        <p id="guardian-child-class">Turma: 3º Ano A</p>
+                    </div>
+                    <span class="portal-status-badge">Matrícula demonstrativa</span>
+                </div>
+
+                <div class="portal-section-heading">
+                    <div>
+                        <h2>Resumo da frequência</h2>
+                        <p>Indicadores de demonstração do período atual.</p>
+                    </div>
+                    <button class="portal-text-button" data-open-view="frequencia">
+                        Ver histórico →
+                    </button>
+                </div>
+
+                <div class="portal-metrics">
+                    <article class="portal-metric">
+                        <span class="portal-metric-icon teal">✓</span>
+                        <span class="portal-metric-label">Presenças</span>
+                        <strong id="guardian-present">0</strong>
+                        <small>Registros no período</small>
+                    </article>
+                    <article class="portal-metric">
+                        <span class="portal-metric-icon red">!</span>
+                        <span class="portal-metric-label">Ausências</span>
+                        <strong id="guardian-absent">0</strong>
+                        <small>Faltas registradas</small>
+                    </article>
+                    <article class="portal-metric">
+                        <span class="portal-metric-icon blue">%</span>
+                        <span class="portal-metric-label">Frequência</span>
+                        <strong id="guardian-rate">—</strong>
+                        <small>Percentual de presença</small>
+                    </article>
+                    <article class="portal-metric">
+                        <span class="portal-metric-icon amber">▤</span>
+                        <span class="portal-metric-label">Aulas registradas</span>
+                        <strong id="guardian-total">0</strong>
+                        <small>Chamadas disponíveis</small>
+                    </article>
+                </div>
+
+                <div class="portal-content-grid">
+                    <article class="portal-card">
+                        <div class="portal-card-heading">
+                            <div>
+                                <h3>Últimos registros</h3>
+                                <p>Movimentações recentes de frequência.</p>
+                            </div>
+                            <button class="portal-text-button" data-open-view="frequencia">Ver tudo</button>
+                        </div>
+                        <div class="portal-table-scroll">
+                            <table class="portal-table">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Disciplina</th>
+                                        <th>Situação</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="guardian-recent-table"></tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article class="portal-card portal-alert-card">
+                        <div class="portal-card-heading">
+                            <div>
+                                <h3>Avisos importantes</h3>
+                                <p>Fique por dentro dos registros.</p>
+                            </div>
+                            <span class="portal-card-symbol">♧</span>
+                        </div>
+                        <div id="guardian-home-notifications"></div>
+                        <button class="portal-btn portal-btn-outline portal-full-button"
+                                data-open-view="notificacoes">Ver notificações</button>
+                    </article>
+                </div>
+
+                <div class="portal-privacy-note">
+                    <span>◇</span>
+                    <p>As informações escolares são confidenciais. Este ambiente de demonstração utiliza dados fictícios.</p>
+                </div>
+            </section>
+
+            <!-- FREQUÊNCIA -->
+            <section class="portal-view" data-section="frequencia">
+                <div class="portal-page-heading">
+                    <span class="portal-eyebrow">HISTÓRICO ESCOLAR</span>
+                    <h1>Frequência</h1>
+                    <p>Consulte os registros de presença e ausência do aluno vinculado.</p>
+                </div>
+
+                <div class="portal-card">
+                    <div class="portal-filter-row">
+                        <label class="portal-field">
+                            <span>Data inicial</span>
+                            <input type="date" id="guardian-date-start">
+                        </label>
+                        <label class="portal-field">
+                            <span>Data final</span>
+                            <input type="date" id="guardian-date-end">
+                        </label>
+                        <label class="portal-field">
+                            <span>Situação</span>
+                            <select id="guardian-status-filter">
+                                <option value="">Todas</option>
+                                <option value="presente">Presente</option>
+                                <option value="ausente">Ausente</option>
+                                <option value="atrasado">Atrasado</option>
+                            </select>
+                        </label>
+                        <button class="portal-btn portal-btn-primary" id="guardian-filter-apply">
+                            Filtrar
+                        </button>
+                        <button class="portal-btn portal-btn-outline" id="guardian-filter-reset">
+                            Limpar
+                        </button>
+                    </div>
+
+                    <div class="portal-table-scroll">
+                        <table class="portal-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Disciplina</th>
+                                    <th>Professor</th>
+                                    <th>Horário</th>
+                                    <th>Situação</th>
+                                    <th>Observação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="guardian-history-table"></tbody>
+                        </table>
+                    </div>
+                    <p class="portal-table-footnote">Os dados exibidos nesta versão são ilustrativos.</p>
+                </div>
+            </section>
+
+            <!-- AULAS -->
+            <section class="portal-view" data-section="aulas">
+                <div class="portal-page-heading">
+                    <span class="portal-eyebrow">ROTINA ACADÊMICA</span>
+                    <h1>Aulas e disciplinas</h1>
+                    <p>Consulte as disciplinas vinculadas ao aluno.</p>
+                </div>
+
+                <div class="portal-card">
+                    <div class="portal-card-heading">
+                        <div>
+                            <h3>Disciplinas</h3>
+                            <p>Visão demonstrativa da organização escolar.</p>
+                        </div>
+                    </div>
+                    <div class="portal-subject-grid" id="guardian-subjects"></div>
+                </div>
+            </section>
+
+            <!-- NOTIFICAÇÕES -->
+            <section class="portal-view" data-section="notificacoes">
+                <div class="portal-page-heading">
+                    <span class="portal-eyebrow">CENTRAL DE AVISOS</span>
+                    <h1>Notificações</h1>
+                    <p>Consulte os avisos relacionados à rotina escolar.</p>
+                </div>
+                <div class="portal-card">
+                    <div class="portal-card-heading">
+                        <div>
+                            <h3>Suas notificações</h3>
+                            <p>Mensagens ilustrativas da demonstração.</p>
+                        </div>
+                        <button class="portal-text-button" id="guardian-read-all">Marcar todas como lidas</button>
+                    </div>
+                    <div id="guardian-notification-list"></div>
+                </div>
+            </section>
+
+            <!-- PERFIL -->
+            <section class="portal-view" data-section="perfil">
+                <div class="portal-page-heading">
+                    <span class="portal-eyebrow">DADOS DA CONTA</span>
+                    <h1>Meu perfil</h1>
+                    <p>Consulte os dados demonstrativos da conta do responsável.</p>
+                </div>
+
+                <div class="portal-card portal-profile-card">
+                    <div class="portal-profile-avatar">RM</div>
+                    <div>
+                        <h2>Responsável Demo</h2>
+                        <p>Conta de demonstração</p>
+                    </div>
+                    <div class="portal-profile-fields">
+                        <label class="portal-field">
+                            <span>Nome completo</span>
+                            <input value="Responsável Demo" readonly>
+                        </label>
+                        <label class="portal-field">
+                            <span>E-mail demonstrativo</span>
+                            <input value="responsavel.demo@example.com" readonly>
+                        </label>
+                        <label class="portal-field">
+                            <span>Aluno vinculado</span>
+                            <input value="Lucas Almeida" readonly>
+                        </label>
+                    </div>
+                    <div class="portal-privacy-note">
+                        <span>◇</span>
+                        <p>Na versão definitiva, os dados do perfil serão carregados da conta autenticada.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="portal-footer">
+                <span>© ONFACE — Sistema de acompanhamento escolar</span>
+                <span>Portal do Responsável · Demonstração</span>
+            </footer>
+        </main>
+    </div>
+</div>
+
+<div class="portal-mobile-overlay" id="portal-mobile-overlay"></div>
+<div class="portal-toast" id="portal-toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

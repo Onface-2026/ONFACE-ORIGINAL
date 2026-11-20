@@ -1,0 +1,1258 @@
+/* =================================
+   1. IDENTIDADE VISUAL DA ONFACE
+================================= */
+
+:root {
+    --azul: #017697;
+    --azul-claro: #0794b4;
+    --azul-escuro: #082f52;
+
+    --cinza: #526b85;
+    --cinza-claro: #f5fafb;
+    --borda: #d8eaf1;
+    --branco: #ffffff;
+
+    --sombra: 0 15px 40px rgba(7, 59, 81, 0.08);
+
+    --fonte-titulo: 'League Spartan', sans-serif;
+    --fonte-texto: 'Readex Pro', sans-serif;
+}
+
+
+/* =================================
+   2. CONFIGURAÇÕES GERAIS
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    color: var(--azul-escuro);
+    background: var(--branco);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.container {
+    width: min(1160px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-titulo);
+    line-height: 1.1;
+}
+
+
+/* =================================
+   3. CABEÇALHO
+================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid #e7f0f3;
+}
+
+.nav-container {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* LOGO OFICIAL ONFACE */
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo-image {
+    display: block;
+    width: 145px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Logo no rodapé */
+
+.footer .logo-image {
+    width: 125px;
+}
+
+/* Ajuste para celulares */
+
+@media (max-width: 768px) {
+    .logo-image {
+        width: 115px;
+    }
+
+    .footer .logo-image {
+        width: 105px;
+    }
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.nav-links a {
+    padding: 10px 9px;
+
+    color: var(--cinza);
+    font-size: 11px;
+    font-weight: 500;
+
+    border-radius: 8px;
+    transition: 0.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--azul);
+    background: #eaf7fa;
+}
+
+.menu-toggle {
+    display: none;
+
+    border: 0;
+    background: #eaf7fa;
+    color: var(--azul);
+
+    padding: 9px 12px;
+    border-radius: 9px;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+/* =================================
+   4. BOTÕES
+================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 13px 20px;
+
+    border: 1px solid transparent;
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--azul);
+    color: var(--branco);
+}
+
+.btn-primary:hover {
+    background: #005d79;
+    box-shadow: 0 8px 22px #01769730;
+}
+
+.btn-outline {
+    color: var(--azul);
+    background: var(--branco);
+    border-color: var(--borda);
+}
+
+.btn-outline:hover {
+    background: #eaf7fa;
+}
+
+.btn-white {
+    background: var(--branco);
+    color: var(--azul);
+    flex-shrink: 0;
+}
+
+.btn-white:hover {
+    background: #eaf7fa;
+}
+
+.nav-button {
+    white-space: nowrap;
+}
+
+
+/* =================================
+   5. APRESENTAÇÃO PRINCIPAL
+================================= */
+
+.hero {
+    padding: 75px 0;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            #e3f5f9,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fcfd
+        );
+
+    overflow: hidden;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.eyebrow {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: var(--azul);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    max-width: 600px;
+
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: var(--azul);
+}
+
+.hero-content > p {
+    max-width: 530px;
+
+    margin-top: 22px;
+
+    color: var(--cinza);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 26px;
+}
+
+.hero-note {
+    margin-top: 20px;
+
+    color: #8198a8;
+    font-size: 11px;
+}
+
+
+/* =================================
+   6. PAINEL ILUSTRATIVO
+================================= */
+
+.hero-visual {
+    position: relative;
+    padding: 15px 0;
+}
+
+.dashboard-card {
+    position: relative;
+    z-index: 2;
+
+    background: var(--branco);
+
+    border: 7px solid #163448;
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    box-shadow: 0 25px 55px #08375020;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 13px;
+
+    background: #f8fcfd;
+    border-bottom: 1px solid var(--borda);
+}
+
+.logo-mini {
+    color: var(--azul);
+    font-family: var(--fonte-titulo);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.online-status {
+    color: #7b93a5;
+    font-size: 9px;
+}
+
+.dashboard-content {
+    padding: 20px 15px;
+}
+
+.dashboard-content h3 {
+    font-size: 24px;
+}
+
+.dashboard-content > p {
+    margin: 5px 0 18px;
+
+    color: #8094a4;
+    font-size: 10px;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.stat-card {
+    padding: 11px 8px;
+
+    background: #fbfdfe;
+    border: 1px solid #e3edf1;
+    border-radius: 9px;
+}
+
+.stat-card span,
+.stat-card small {
+    display: block;
+
+    color: #7d91a2;
+    font-size: 9px;
+}
+
+.stat-card strong {
+    display: block;
+
+    margin: 5px 0;
+
+    font-family: var(--fonte-titulo);
+    font-size: 25px;
+}
+
+.green {
+    color: #159b83 !important;
+}
+
+.student-list {
+    margin-top: 15px;
+
+    border: 1px solid #e4edf1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.student-row {
+    display: grid;
+    grid-template-columns: 1.3fr 0.6fr 0.8fr;
+    gap: 5px;
+
+    padding: 10px 7px;
+
+    border-top: 1px solid #edf3f5;
+
+    color: var(--cinza);
+    font-size: 9px;
+}
+
+.student-row:first-child {
+    border-top: 0;
+}
+
+.student-heading {
+    background: #f6fafb;
+    color: #8094a4;
+}
+
+.floating-card {
+    position: absolute;
+    z-index: 3;
+
+    right: -12px;
+    bottom: -5px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+
+    box-shadow: var(--sombra);
+}
+
+.check-icon {
+    display: grid;
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+    background: #e1f7f1;
+    color: #159b83;
+    font-size: 19px;
+}
+
+.floating-card strong,
+.floating-card small {
+    display: block;
+}
+
+.floating-card strong {
+    font-size: 11px;
+}
+
+.floating-card small {
+    margin-top: 4px;
+
+    color: var(--cinza);
+    font-size: 9px;
+}
+
+
+/* =================================
+   7. SEÇÕES
+================================= */
+
+.section {
+    padding: 80px 0;
+}
+
+.section-light {
+    background: var(--cinza-claro);
+}
+
+.section-heading {
+    max-width: 730px;
+    margin: 0 auto 42px;
+
+    text-align: center;
+}
+
+.section-heading h2 {
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.section-heading p {
+    margin-top: 16px;
+
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+
+/* =================================
+   8. CARDS
+================================= */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.info-card,
+.benefit-card {
+    padding: 25px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 17px;
+
+    transition: 0.25s;
+}
+
+.info-card:hover,
+.benefit-card:hover {
+    transform: translateY(-5px);
+    border-color: #9acbd8;
+    box-shadow: var(--sombra);
+}
+
+.icon-box {
+    display: grid;
+    place-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 20px;
+
+    border-radius: 14px;
+    background: #eaf7fa;
+    color: var(--azul);
+
+    font-size: 24px;
+}
+
+.info-card h3,
+.benefit-card h3 {
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+
+.info-card p,
+.benefit-card p {
+    color: var(--cinza);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 18px;
+
+    color: var(--azul);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.center-button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+/* =================================
+   9. CHAMADA COMERCIAL
+================================= */
+
+.cta-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        110deg,
+        #087e9b,
+        #016887
+    );
+
+    color: var(--branco);
+}
+
+.cta-band h2 {
+    max-width: 600px;
+    font-size: 34px;
+}
+
+.cta-band p {
+    max-width: 590px;
+    margin-top: 12px;
+
+    color: #d8eef4;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.eyebrow-light {
+    color: #d5f3f8;
+}
+
+
+/* =================================
+   10. PÁGINAS INTERNAS
+================================= */
+
+.page-hero {
+    padding: 70px 0 55px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            #e4f6fa,
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fcfd
+        );
+}
+
+.page-hero h1 {
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 800;
+}
+
+.page-hero p {
+    max-width: 700px;
+    margin: 18px auto 0;
+
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.split-layout h2 {
+    margin-bottom: 18px;
+    font-size: 40px;
+}
+
+.split-layout p {
+    margin-bottom: 15px;
+
+    color: var(--cinza);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+
+/* =================================
+   11. PLANOS
+================================= */
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
+}
+
+.plan-card {
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px;
+
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 17px;
+}
+
+.plan-card.featured {
+    border: 2px solid var(--azul);
+    box-shadow: var(--sombra);
+}
+
+.plan-label {
+    color: var(--azul);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.plan-card h3 {
+    margin: 12px 0;
+    font-size: 27px;
+}
+
+.plan-price {
+    margin-bottom: 10px;
+
+    font-family: var(--fonte-titulo);
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.plan-description {
+    min-height: 55px;
+
+    color: var(--cinza);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.plan-card ul {
+    margin: 20px 0;
+    padding-left: 17px;
+
+    color: var(--cinza);
+    font-size: 11px;
+    line-height: 2;
+}
+
+.plan-card .btn {
+    width: 100%;
+    margin-top: auto;
+}
+
+
+/* =================================
+   12. EQUIPE
+================================= */
+
+/* =========================================
+   PÁGINA DA EQUIPE ONFACE
+========================================= */
+
+.team-hero {
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(1, 118, 151, 0.10),
+            transparent 35%
+        ),
+        #f2f8fc;
+}
+
+.team-hero h1 span {
+    color: #017697;
+}
+
+.team-hero .container {
+    max-width: 850px;
+}
+
+.team-section {
+    background: #ffffff;
+}
+
+.team-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+    margin-top: 45px;
+}
+
+
+/* CARD DO INTEGRANTE */
+
+.team-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #d9e8ee;
+
+    border-radius: 16px;
+
+    box-shadow: 0 8px 24px rgba(0, 55, 75, 0.07);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 15px 32px rgba(0, 55, 75, 0.13);
+}
+
+
+/* FOTOGRAFIA */
+
+.team-photo {
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #eaf3f7;
+}
+
+.team-photo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center 30%;
+
+    transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-photo img {
+    transform: scale(1.04);
+}
+
+
+/* INFORMAÇÕES */
+
+.team-info {
+    padding: 22px 20px 24px;
+}
+
+.team-info h3 {
+    margin: 0 0 10px;
+
+    color: #017697;
+
+    font-family: "League Spartan", sans-serif;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+.team-info p {
+    margin: 0;
+
+    color: #536c79;
+
+    font-family: "Readex Pro", sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* RESPONSIVIDADE PARA TABLETS */
+
+@media (max-width: 900px) {
+
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 22px;
+    }
+
+}
+
+
+/* RESPONSIVIDADE PARA CELULARES */
+
+@media (max-width: 560px) {
+
+    .team-grid {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+
+        max-width: 380px;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .team-info {
+        padding: 20px;
+    }
+
+    .team-info h3 {
+        font-size: 22px;
+    }
+
+    .team-info p {
+        font-size: 14px;
+    }
+
+}
+
+/* =================================
+   13. FORMULÁRIOS
+================================= */
+
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-field.full {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 13px;
+
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+
+    background: var(--branco);
+    color: var(--azul-escuro);
+
+    outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px #01769718;
+}
+
+.form-field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* =================================
+   14. RODAPÉ
+================================= */
+
+.footer {
+    padding: 35px 0;
+
+    background: #f5fafb;
+    border-top: 1px solid #e4eff3;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17px;
+
+    text-align: center;
+}
+
+.footer-content p,
+.footer-content small {
+    color: #71899b;
+    font-size: 11px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: var(--cinza);
+    font-size: 11px;
+}
+
+.footer-links a:hover {
+    color: var(--azul);
+}
+
+
+/* =================================
+   15. ANIMAÇÕES
+================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =================================
+   16. RESPONSIVIDADE
+================================= */
+
+@media (max-width: 1050px) {
+
+    .nav-links a {
+        padding: 9px 5px;
+        font-size: 10px;
+    }
+
+    .nav-button {
+        padding: 11px 13px;
+        font-size: 10px;
+    }
+
+    .plans-grid,
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-grid {
+        gap: 30px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .nav-container {
+        min-height: 72px;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 15px 20px;
+
+        background: var(--branco);
+        border-bottom: 1px solid var(--borda);
+        box-shadow: var(--sombra);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    .hero-grid,
+    .split-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .hero-visual {
+        max-width: 560px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .cards-grid,
+    .content-grid,
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .cta-band {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 540px) {
+
+    .container {
+        width: calc(100% - 30px);
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .hero-content > p {
+        font-size: 13px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .dashboard-content {
+        padding: 12px 7px;
+    }
+
+    .dashboard-content h3 {
+        font-size: 19px;
+    }
+
+    .stat-card {
+        padding: 7px 4px;
+    }
+
+    .stat-card strong {
+        font-size: 19px;
+    }
+
+    .student-row {
+        font-size: 7px;
+        padding: 8px 4px;
+    }
+
+    .floating-card {
+        right: -3px;
+        bottom: -15px;
+        padding: 9px;
+    }
+
+    .cards-grid,
+    .content-grid,
+    .team-grid,
+    .benefits-grid,
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 35px;
+    }
+
+    .page-hero h1 {
+        font-size: 40px;
+    }
+
+    .cta-band {
+        padding: 25px;
+    }
+
+    .cta-band h2 {
+        font-size: 30px;
+    }
+
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-field.full {
+        grid-column: auto;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+}
