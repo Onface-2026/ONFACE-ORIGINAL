@@ -3,15 +3,58 @@
    Interface de demonstração
 ========================================== */
 
-(() => {
+(async () => {
     "use strict";
 
     const role = document.body.dataset.portalRole;
+
     if (!["responsavel", "aluno"].includes(role)) return;
+
+    // Verifica se existe uma sessão autenticada no Flask.
+    let usuarioLogado;
+
+    try {
+        const resposta = await fetch("http://127.0.0.1:5000/api/me", {
+            method: "GET",
+            credentials: "include"
+        });
+
+        if (!resposta.ok) {
+            window.location.replace("../login.html");
+            return;
+        }
+
+        const dados = await resposta.json();
+
+        if (!dados.autenticado || !dados.usuario) {
+            window.location.replace("../login.html");
+            return;
+        }
+
+        // Confere se o perfil corresponde ao dashboard acessado.
+        const perfisPermitidos = {
+            aluno: "ALUNO",
+            responsavel: "RESPONSAVEL"
+        };
+
+        if (dados.usuario.perfil !== perfisPermitidos[role]) {
+            window.location.replace("../login.html");
+            return;
+        }
+
+        usuarioLogado = dados.usuario;
+
+    } catch (erro) {
+        console.error("Erro ao verificar autenticação:", erro);
+        window.location.replace("../login.html");
+        return;
+    }
 
     const prefix = role === "responsavel" ? "guardian" : "student";
     const ATTENDANCE_KEY = "onface_demo_attendance_v1";
     const NOTIFICATION_KEY = `onface_demo_notifications_${role}_v1`;
+    let frequenciaResponsavel = null;
+    let alunosResponsavel = [];
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -95,6 +138,106 @@
             "'": "&#39;"
         })[char]);
     }
+
+  async function carregarAlunosResponsavel() {
+    if (role !== "responsavel") return;
+
+    const container = $("#guardian-children-list");
+    if (!container) return;
+
+    try {
+        const resposta = await fetch(
+            "http://127.0.0.1:5000/api/responsavel/alunos",
+            {
+                method: "GET",
+                credentials: "include"
+            }
+        );
+
+        const dados = await resposta.json();
+        alunosResponsavel = Array.isArray(dados.alunos)
+    ? dados.alunos
+    : [];
+
+        if (!resposta.ok || !dados.sucesso) {
+            throw new Error(
+                dados.mensagem || "Não foi possível carregar os alunos."
+            );
+        }
+
+        if (!dados.alunos.length) {
+            container.innerHTML =
+                '<p class="portal-empty">Nenhum aluno vinculado a esta conta.</p>';
+            return;
+        }
+
+        container.innerHTML = dados.alunos.map(aluno => {
+            const iniciais = aluno.nome
+                .trim()
+                .split(/\s+/)
+                .slice(0, 2)
+                .map(parte => parte.charAt(0))
+                .join("")
+                .toUpperCase();
+
+            return `
+                <div class="portal-child-card">
+                    <div class="portal-child-avatar">
+                        ${escapeHTML(iniciais)}
+                    </div>
+
+                    <div class="portal-child-info">
+                        <span>ALUNO VINCULADO</span>
+                        <h2>${escapeHTML(aluno.nome)}</h2>
+                        <p>Matrícula: ${escapeHTML(
+                            aluno.matricula || "Não informada"
+                        )}</p>
+                    </div>
+
+                    <span class="portal-status-badge">
+                        ${escapeHTML(aluno.status || "—")}
+                    </span>
+                </div>
+            `;
+        }).join("");
+
+    } catch (erro) {
+        console.error("Erro ao carregar alunos vinculados:", erro);
+
+        container.innerHTML =
+            '<p class="portal-empty">Não foi possível carregar os alunos. Atualize a página e tente novamente.</p>';
+    }
+}
+function preencherSeletorAlunosResponsavel() {
+    const seletor = $("#guardian-student-filter");
+
+    if (!seletor) return;
+
+    const alunoSelecionado = seletor.value;
+
+    seletor.innerHTML = `
+        <option value="">Todos os alunos</option>
+    `;
+
+    alunosResponsavel.forEach(aluno => {
+        const opcao = document.createElement("option");
+
+        opcao.value = aluno.id_aluno;
+        opcao.textContent = aluno.nome;
+
+        seletor.appendChild(opcao);
+    });
+
+    // Mantém a seleção anterior, caso ainda exista.
+    if (
+        alunoSelecionado &&
+        alunosResponsavel.some(
+            aluno => String(aluno.id_aluno) === alunoSelecionado
+        )
+    ) {
+        seletor.value = alunoSelecionado;
+    }
+}
 
     function readArray(key) {
         try {
@@ -185,6 +328,41 @@
         $("#portal-menu-toggle").setAttribute("aria-expanded", String(opened));
     });
 
+    /* ======================================
+   ENCERRAR SESSÃO
+====================================== */
+
+$$("[data-logout]").forEach(button => {
+    button.addEventListener("click", async () => {
+
+        button.disabled = true;
+
+        try {
+            const resposta = await fetch("http://127.0.0.1:5000/api/logout", {
+                method: "POST",
+                credentials: "include"
+            });
+
+            const dados = await resposta.json();
+
+            if (!resposta.ok || !dados.sucesso) {
+                throw new Error(dados.mensagem || "Não foi possível encerrar a sessão.");
+            }
+
+            // Limpa os dados temporários do navegador.
+            sessionStorage.removeItem("onface_usuario");
+
+            // Retorna à página de login.
+            window.location.replace("../login.html");
+
+        } catch (erro) {
+            console.error("Erro ao encerrar sessão:", erro);
+            notify("Não foi possível sair. Tente novamente.");
+            button.disabled = false;
+        }
+    });
+});
+
     $("#portal-mobile-overlay")?.addEventListener("click", () => {
         document.body.classList.remove("portal-menu-open");
         $("#portal-menu-toggle")?.setAttribute("aria-expanded", "false");
@@ -206,10 +384,17 @@
         });
     }
 
-    const greetingName = role === "responsavel" ? "Responsável" : "Lucas";
+    const greetingName = usuarioLogado.nome;
 
-    const greeting = $(`#${prefix}-greeting`);
-    if (greeting) greeting.textContent = greetingName;
+const greeting = $(`#${prefix}-greeting`);
+if (greeting) greeting.textContent = greetingName;
+
+// Atualiza o nome exibido na identificação lateral.
+const sidebarName = $(".portal-user-mini strong");
+
+if (sidebarName) {
+    sidebarName.textContent = usuarioLogado.nome;
+}
 
     /* ======================================
        CONVERTER LISTAS DE PRESENÇA
@@ -276,16 +461,76 @@
     }
 
     function getAttendanceRows() {
-        const stored = convertAttendanceLists();
+    // No painel do responsável, utiliza somente os dados recebidos do Flask.
+    if (role === "responsavel") {
+    const registros = Array.isArray(frequenciaResponsavel)
+        ? frequenciaResponsavel
+        : [];
 
-        /*
-          Se houver registros reais da demonstração para Lucas,
-          eles serão usados. Caso contrário, exibimos exemplos fictícios.
-        */
-        return stored.length
-            ? stored.sort((a, b) => b.date.localeCompare(a.date))
-            : demoAttendance.map(row => ({ ...row, source: "exemplo" }));
+    const seletor = $("#guardian-student-filter");
+    const alunoSelecionado = seletor ? seletor.value : "";
+
+    if (!alunoSelecionado) {
+        return registros;
     }
+
+    return registros.filter(registro =>
+        String(registro.studentId) === alunoSelecionado
+    );
+}
+
+    // No painel do aluno, mantém o comportamento atual.
+    const stored = convertAttendanceLists();
+
+    return stored.length
+        ? stored.sort((a, b) => b.date.localeCompare(a.date))
+        : demoAttendance.map(row => ({ ...row, source: "exemplo" }));
+}
+
+async function carregarFrequenciaResponsavel() {
+    if (role !== "responsavel") return;
+
+    try {
+        const resposta = await fetch(
+            "http://127.0.0.1:5000/api/responsavel/frequencia",
+            {
+                method: "GET",
+                credentials: "include"
+            }
+        );
+
+        const dados = await resposta.json();
+
+        if (!resposta.ok || !dados.sucesso) {
+            throw new Error(
+                dados.mensagem || "Não foi possível carregar a frequência."
+            );
+        }
+
+        frequenciaResponsavel = dados.registros.map(registro => ({
+            studentId: registro.id_aluno,
+            date: registro.data_aula,
+            subject: registro.disciplina,
+            teacher: "—",
+            time: registro.horario_inicio
+                ? registro.horario_inicio.slice(0, 5)
+                : "—",
+            status: registro.situacao.toLowerCase(),
+            note: registro.justificativa || "",
+            student: registro.aluno,
+            className: registro.turma,
+            source: "banco"
+        }));
+
+        renderMetrics();
+        renderRecent();
+        renderHistory();
+
+    } catch (erro) {
+        console.error("Erro ao carregar frequência:", erro);
+        notify("Não foi possível carregar a frequência do banco de dados.");
+    }
+}
 
     function getFilteredRows() {
         const rows = getAttendanceRows();
@@ -459,7 +704,24 @@
         renderHistory();
         renderSubjects();
         renderNotifications();
+
+       if (role === "responsavel") {
+    carregarAlunosResponsavel().then(() => {
+        preencherSeletorAlunosResponsavel();
+        carregarFrequenciaResponsavel();
+    });
+}
     }
+
+const seletorAluno = $("#guardian-student-filter");
+
+if (seletorAluno) {
+    seletorAluno.addEventListener("change", () => {
+        renderMetrics();
+        renderRecent();
+        renderHistory();
+    });
+}
 
     refreshPortal();
 

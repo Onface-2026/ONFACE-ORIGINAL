@@ -55,25 +55,90 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // =====================================
-    // LOGIN — SOMENTE DEMONSTRATIVO
+    // LOGIN
     // =====================================
 
-    const loginForm = document.getElementById("login-form");
 
-    if (loginForm) {
+const loginForm = document.getElementById("login-form");
 
-        loginForm.addEventListener("submit", function (evento) {
+if (loginForm) {
+    loginForm.addEventListener("submit", async function (evento) {
+        evento.preventDefault();
 
-            evento.preventDefault();
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value;
+        const botao = loginForm.querySelector('button[type="submit"]');
+
+        botao.disabled = true;
+        mostrarMensagem("login-message", "Verificando seus dados...");
+
+        try {
+            const resposta = await fetch("http://127.0.0.1:5000/api/login", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        email: email,
+        senha: senha
+    })
+});
+
+            const dados = await resposta.json();
+
+            if (!resposta.ok) {
+                mostrarMensagem(
+                    "login-message",
+                    dados.mensagem || "Não foi possível realizar o login."
+                );
+                return;
+            }
+
+            // Guarda os dados básicos do usuário para a navegação.
+            sessionStorage.setItem(
+                "onface_usuario",
+                JSON.stringify(dados.usuario)
+            );
+
+
+mostrarMensagem(
+    "login-message",
+    "Login realizado com sucesso! Redirecionando..."
+);
+
+const destinos = {
+    ADMINISTRADOR: "dashboard/admin.html",
+    RESPONSAVEL: "dashboard/responsável.html",
+    ALUNO: "dashboard/aluno.html"
+};
+
+const destino = destinos[dados.usuario.perfil];
+
+if (destino) {
+    window.location.href = destino;
+} else {
+    mostrarMensagem(
+        "login-message",
+        "Seu perfil ainda não possui um dashboard disponível."
+    );
+}
+
+
+        } catch (erro) {
+            console.error("Erro no login:", erro);
 
             mostrarMensagem(
                 "login-message",
-                "Interface demonstrativa: a autenticação será implementada posteriormente."
+                "Não foi possível conectar ao servidor da ONFACE."
             );
 
-        });
+        } finally {
+            botao.disabled = false;
+        }
+    });
+}
 
-    }
 
 
     // =====================================

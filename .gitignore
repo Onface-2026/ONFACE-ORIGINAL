@@ -1,0 +1,16 @@
+
+# Ambiente virtual
+.venv/
+
+# Arquivos Python
+__pycache__/
+*.py[cod]
+
+# Credenciais e variáveis privadas
+.env
+.env.*
+!.env.example
+
+# Arquivos temporários
+*.log
+.DS_Store
